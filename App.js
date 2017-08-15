@@ -1,36 +1,25 @@
 import React, { Component } from 'react';
-import { AppRegistry, Image, View } from 'react-native';
+import { Text, AppRegistry, StyleSheet, View } from 'react-native';
 
-class BlinkingText extends Component {
+export default class StyleTest extends Component {
     constructor(props) {
         super(props);
-        this.props.state = {displayText: true};
-
-        setInterval(() => {
-            this.setState(previousState => {
-                return { displayText: !previousState.displayText };
-            });
-        }, 500);
+        this.styles = StyleSheet.create({
+            red: {
+                color: 'blue',
+                fontWeight: 'bold',
+                fontSize: 38
+            }
+        });
     }
 
     render() {
-        //let display = { uri: (this.props.displayText ? this.props.image: "") };
-        let display = { uri: this.props.image };
-
         return (
-            <Image source={display} style={{width: 300, height: 300}}/>
-        );
-    };
-}
-
-export default class App extends Component {
-    render() {
-        return (
-            <View>
-                <BlinkingText image="https://gifyu.com/images/060202.gif"/>
+            <View style={{alignItems: 'center'}}>
+                <Text style={this.styles.red}>Hello World in Red</Text>
             </View>
         );
     };
 }
 
-AppRegistry.registerComponent('PantryPal', () => App);
+AppRegistry.registerComponent('PantryPal', () => StyleTest);
